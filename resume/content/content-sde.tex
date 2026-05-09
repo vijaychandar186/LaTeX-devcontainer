@@ -1,0 +1,63 @@
+%===============================================================================
+% content-sde.tex  —  Full-Stack / SDE roles
+%===============================================================================
+
+\section{Professional Summary}
+
+Full-Stack Software Engineer with 2+ years of production experience designing backend systems, real-time APIs, and developer tooling. Strong foundation in distributed systems, database internals, and systems design. MSE in Computer Science at Stanford University.
+
+\section{Education}
+
+\entryheading{Master of Science --- Computer Science}{Aug 2023 -- May 2025}
+\entrysubheading{Stanford University, Stanford, CA}{GPA: 3.82/4.0}
+
+\entryheading{Bachelor of Science in Computer Science}{Aug 2019 -- May 2023}
+\entrysubheading{University of Michigan, Ann Arbor, MI}{GPA: 3.91/4.0}
+
+\section{Professional Experience}
+
+\entryheading{Backend Engineer --- Orbit Systems}{Aug 2023 -- Present}
+\entrysubheading{SaaS platform for real-time fleet management and logistics optimization}{}
+\begin{rlist}
+  \item \textbf{Designed a WebSocket-based vehicle telemetry ingestion layer} handling 80K+ concurrent connections with fan-out to a PostgreSQL time-series partition and a Redis pub/sub layer for live dashboard updates at $<$50ms end-to-end.
+  \item \textbf{Implemented a role-based access control (RBAC) system} with attribute-level field masking, cutting unauthorized data exposure incidents to zero across 200+ enterprise tenants.
+  \item \textbf{Migrated a monolithic reporting service} to three independently-deployable Go microservices, reducing p99 report generation time from 12s to 1.4s and eliminating shared-state deployment risk.
+  \item \textbf{Introduced contract testing} (Pact) between 9 service pairs, catching 14 breaking API changes in CI before they reached staging and reducing cross-team hotfix cycles by 40\%.
+\end{rlist}
+
+\section{Projects}
+
+\entryheading{Collaborative Code Editor with Operational Transforms}{}
+\entrysubheading{TypeScript, Node.js, WebSocket, React, Redis, PostgreSQL}{}
+\begin{rlist}
+  \item Built a browser-based collaborative editor supporting 50+ simultaneous cursors with conflict-free concurrent edits via a server-authoritative Operational Transform engine; OT convergence tested with 10K randomized concurrent operation pairs.
+  \item Implemented presence broadcasting over a Redis pub/sub channel with exponential-backoff reconnection and session replay on rejoin, achieving $<$80ms cursor propagation at 40 concurrent users on a single node.
+\end{rlist}
+
+\entryheading{Distributed Cron Scheduler with Leader Election}{}
+\entrysubheading{Go, etcd, gRPC, PostgreSQL, Prometheus}{}
+\begin{rlist}
+  \item Built a horizontally-scalable job scheduler using etcd-based leader election (Raft consensus) to guarantee single-node job dispatch; missed-fire detection re-queues jobs skipped during failover within one tick window.
+  \item Supported at-least-once and at-most-once delivery semantics configurable per job type; idempotency keys stored in Postgres prevent duplicate side-effects on retry, validated by 72-hour chaos-testing runs.
+\end{rlist}
+
+\entryheading{Full-Text Search Engine from Scratch}{}
+\entrysubheading{Python, C Extensions, BM25, Positional Inverted Index}{}
+\begin{rlist}
+  \item Implemented a positional inverted index with variable-byte compression, achieving 4.1$\times$ index size reduction vs.\ na\"{i}ve storage; BM25 ranking with field-length normalization matched Elasticsearch results on the MS MARCO dev set within 2\% NDCG@10.
+  \item Added query expansion using GloVe nearest neighbors and a phrase-query proximity scorer, improving recall@10 by 18\% on long-tail queries while keeping median query latency under 12ms on a 1M-document corpus.
+\end{rlist}
+
+\entryheading{Multi-Tenant SaaS Billing System}{}
+\entrysubheading{Python, FastAPI, Stripe, PostgreSQL, Celery}{}
+\begin{rlist}
+  \item Designed a usage-based billing engine that meters API calls per tenant per minute, aggregates into monthly invoices via Celery beat, and syncs line items to Stripe with idempotency keys to survive network retries without duplicate charges.
+  \item Implemented Stripe webhook processing with HMAC signature verification, dead-letter queuing for failed events, and an admin dashboard for manual invoice adjustments; zero billing discrepancies across 18 months of production traffic.
+\end{rlist}
+
+\section{Technical Skills}
+
+\skill{Languages \& Frameworks}{Python, Go, TypeScript, SQL, FastAPI, Flask, Node.js, React, gRPC}
+\skill{Cloud \& DevOps}{AWS (EC2, RDS, S3), GCP, Docker, Kubernetes, GitHub Actions, Terraform, Pact}
+\skill{Systems \& Tools}{etcd, Redis, Celery, Kafka, Prometheus, OpenTelemetry, Stripe SDK, Git}
+\skill{Databases}{PostgreSQL, MySQL, Redis, SQLite}

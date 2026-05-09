@@ -1,0 +1,67 @@
+%===============================================================================
+% content-ml.tex  —  Resume section content for ML Engineer roles
+%
+% EDIT THIS FILE:      section content only
+% COMPILE FROM:        pdflatex main.tex
+%===============================================================================
+
+\section{Professional Summary}
+
+ML Engineer with 2+ years of production experience in recommendation systems, time-series forecasting, and privacy-preserving machine learning. Skilled in Python, PyTorch, and cloud-based MLOps. MSE in Computer Science at Stanford University.
+
+\section{Education}
+
+\entryheading{Master of Science --- Computer Science}{Aug 2023 -- May 2025}
+\entrysubheading{Stanford University, Stanford, CA}{GPA: 3.82/4.0}
+
+\entryheading{Bachelor of Science in Computer Science}{Aug 2019 -- May 2023}
+\entrysubheading{University of Michigan, Ann Arbor, MI}{GPA: 3.91/4.0}
+
+\section{Professional Experience}
+
+\entryheading{ML Engineer --- Prismatic Labs}{Jul 2023 -- Present}
+\entrysubheading{Series A startup building AI-powered personalization infrastructure for media platforms}{}
+\begin{rlist}
+  \item \textbf{Built a contextual multi-armed bandit recommendation system} using LinUCB with user embedding lookups, increasing click-through rate by 22\% and reducing cold-start latency from 800ms to under 200ms.
+  \item \textbf{Trained a Temporal Fusion Transformer} for multi-horizon demand forecasting across 400+ product SKUs, achieving 9.3\% MAPE vs.\ 14.1\% for the previous ARIMA baseline in production.
+  \item \textbf{Designed a feature store} using Feast + Redis for real-time feature serving at $<$10ms p99, decoupling training and inference pipelines and eliminating training-serving skew across 6 downstream models.
+  \item \textbf{Instrumented model monitoring} with Evidently AI for data drift and concept drift detection, triggering automated retraining workflows that reduced mean-time-to-recovery from 3 days to under 4 hours.
+\end{rlist}
+
+\section{Projects}
+
+\entryheading{Federated Learning Framework for Privacy-Preserving Clinical NLP}{}
+\entrysubheading{Python, PyTorch, Flower, HuggingFace, Differential Privacy}{}
+\begin{rlist}
+  \item Implemented a federated fine-tuning system for clinical BERT across 8 simulated hospital nodes using the Flower framework, achieving within 1.4\% F1 of centralized training with zero raw data leaving node boundaries.
+  \item Applied per-sample gradient clipping and Gaussian noise injection (DP-SGD) with $\varepsilon = 3.2$, and profiled the privacy-utility tradeoff across clipping thresholds using R\'{e}nyi differential privacy accounting.
+  \item Benchmarked FedAvg, FedProx, and SCAFFOLD aggregation strategies on non-IID clinical note splits, finding FedProx reduced client drift by 31\% on the most heterogeneous partition.
+\end{rlist}
+
+\entryheading{Multi-Fidelity Bayesian Hyperparameter Optimization Pipeline}{}
+\entrysubheading{Python, Optuna, Ray Tune, Weights \& Biases, BOHB}{}
+\begin{rlist}
+  \item Built a hyperparameter search pipeline using BOHB (Bayesian Optimization + HyperBand) that cut total GPU-hours for architecture search by 58\% compared to random search across image classification benchmarks.
+  \item Implemented a Gaussian Process surrogate with Mat\'{e}rn kernel and expected-improvement acquisition, integrating early stopping via successive halving to eliminate underperforming trials after 2 epochs.
+  \item Logged all trials to Weights \& Biases with parallel-coordinates sweep visualization; results reproduced across 5 seeds with $<$0.3\% variance in final validation accuracy.
+\end{rlist}
+
+\entryheading{Graph Neural Network for Drug--Target Interaction Prediction}{}
+\entrysubheading{Python, PyTorch Geometric, DGL, RDKit, DeepChem}{}
+\begin{rlist}
+  \item Modeled drug--target interaction as a bipartite link-prediction task on a heterogeneous graph of 12K compounds and 4K protein targets, using message-passing GNN with edge-type-specific weights.
+  \item Achieved AUROC of 0.913 on the BindingDB test split, outperforming DeepDTA CNN baseline by 6.2 points; ablated attention-pooling vs.\ mean-pooling on molecular subgraphs to explain the gain.
+\end{rlist}
+
+\section{Publications}
+
+\entryheading{Federated Fine-Tuning of Clinical Language Models under Differential Privacy Constraints}{2024}
+
+\entryheading{Multi-Fidelity Bayesian Optimization for Neural Architecture Search on Imbalanced Tabular Data}{2023}
+
+\section{Skills}
+
+\skill{Machine Learning \& AI}{Recommendation Systems, Time-Series Forecasting, Federated Learning, GNNs, Transformers, RL, NLP}
+\skill{Frameworks \& Tools}{Python, PyTorch, JAX, Scikit-Learn, HuggingFace, Optuna, Ray Tune, ONNX, Git}
+\skill{MLOps \& Infrastructure}{AWS (SageMaker, S3, EKS), Feast, MLflow, Weights \& Biases, Docker, Kubernetes}
+\skill{Databases}{PostgreSQL, Redis, Pinecone, MySQL}

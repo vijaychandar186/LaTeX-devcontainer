@@ -1,0 +1,89 @@
+%===============================================================================
+% main.tex  —  Resume formatting master file
+%
+% COMPILE THIS FILE:   pdflatex main.tex
+% EDIT BODY CONTENT:   content-sde.tex
+%===============================================================================
+\documentclass[9pt, letterpaper]{extarticle}
+
+%-------------------------------------------------------------------------------
+% PACKAGES
+%-------------------------------------------------------------------------------
+\usepackage[top=0.25in, bottom=0.25in, left=0.4in, right=0.4in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{charter}
+
+\usepackage{tabularx}
+
+\hypersetup{colorlinks=true, urlcolor=black, linkcolor=black}
+
+%-------------------------------------------------------------------------------
+% SECTION STYLE  —  bold uppercase with rule
+%-------------------------------------------------------------------------------
+\titleformat{\section}
+  {\normalfont\normalsize\bfseries\uppercase}
+  {}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{4pt}
+
+\setlength{\parindent}{0pt}
+
+%-------------------------------------------------------------------------------
+% CUSTOM COMMANDS  (used inside content-sde.tex)
+%-------------------------------------------------------------------------------
+
+% Bold title left + italic date right; omit date if empty
+\newcommand{\entryheading}[2]{%
+  \noindent\textbf{#1}\ifx&#2&\else\hfill\textit{#2}\fi\par
+}
+
+% Italic institution left + detail right, with spacing below
+\newcommand{\entrysubheading}[2]{%
+  \noindent\textit{#1}\hfill#2\par\vspace{4pt}
+}
+
+% Bold label + colon + value for skills rows
+\newcommand{\skill}[2]{%
+  \noindent\textbf{#1:} #2\par\vspace{2pt}
+}
+
+% Tight bullet list for experience / projects / publications
+\newenvironment{rlist}{%
+  \begin{itemize}[leftmargin=1.5em, topsep=2pt, itemsep=1pt, parsep=0pt, label=\textbullet]
+}{%
+  \end{itemize}
+}
+
+%-------------------------------------------------------------------------------
+% HEADER  (contact info — edit directly here if it changes)
+%-------------------------------------------------------------------------------
+\newcommand{\resumeName}{Jane Doe}
+\newcommand{\resumeLocation}{San Francisco, USA}
+\newcommand{\resumeEmail}{jane.doe@example.com}
+\newcommand{\resumePhone}{+1 (555) 123-4567}
+\newcommand{\resumeLinkedIn}{https://www.linkedin.com/in/janedoe}
+
+%-------------------------------------------------------------------------------
+% DOCUMENT
+%-------------------------------------------------------------------------------
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+  {\Large\textbf{\MakeUppercase{\resumeName}}}
+\end{center}
+\vspace{-8pt}
+\begin{tabularx}{\textwidth}{@{}X r@{}}
+  {\small\resumeLocation} & {\small\resumePhone}                            \\
+  {\small\resumeEmail}    & {\small\href{\resumeLinkedIn}{\resumeLinkedIn}}
+\end{tabularx}
+\vspace{4pt}
+
+%-------------------------------------------------------------------------------
+% BODY  —  all section content lives in content-sde.tex
+%-------------------------------------------------------------------------------
+\input{content/content-ml}
+
+\end{document}
